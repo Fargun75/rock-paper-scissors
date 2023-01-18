@@ -11,15 +11,18 @@ function getComputerChoice () {
     }
 }
 
-let computerSelection = getComputerChoice();
-
-
-let playerInput = prompt("You choose - Rock, Paper or Scissors? :");
-let playerFirstletter = playerInput.slice(0,1);
-let playerRestletters = playerInput.slice(1);
-let playerSelection = playerFirstletter.toUpperCase() + playerRestletters.toLocaleLowerCase();
+function getUserChoice() {
+    let playerInput = prompt("You choose - Rock, Paper or Scissors?: ");
+    let playerFirstletter = playerInput.slice(0,1);
+    let playerRestletters = playerInput.slice(1);
+    let playerSelection = playerFirstletter.toUpperCase() + playerRestletters.toLowerCase();
+    return(playerSelection);
+}
+    
+    
 
 function playRound(playerSelection, computerSelection) {
+    
     if (playerSelection === "Rock" && computerSelection === "Rock") {
         return ("It is a draw!");
     } else if (playerSelection === "Rock" && computerSelection === "Paper") {
@@ -40,11 +43,26 @@ function playRound(playerSelection, computerSelection) {
         return("It is a draw!");
     
     } 
-
+    
 }
-console.log("The computer selected: " + computerSelection);
-console.log("You selected: " + playerSelection);
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+    for (let i = 0; i < 5; i++) {
+        let computerSelection = getComputerChoice();
+        let playerSelection = getUserChoice();
+        playRound();
+        console.log("The computer selected: " + computerSelection);
+        console.log("You selected: " + playerSelection);
+        console.log(playRound(playerSelection, computerSelection));
+        console.log("\n");
+    
+    }
+    
+}
+
+game();
+
+    
 
 
 
