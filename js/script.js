@@ -46,23 +46,48 @@ function playRound(playerSelection, computerSelection) {
     
 }
 
+let computerScore = 0;
+let playerScore = 0;
+
+function keepScore(playerSelection, computerSelection) {
+    if (playerSelection === "Rock" && computerSelection === "Paper") {
+        return (++computerScore);
+    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        return (++playerScore);
+    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+        return (++playerScore);
+    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        return (++computerScore);
+    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        return (++computerScore); 
+    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        return (++playerScore);
+    } 
+    
+}
+
 function game() {
     for (let i = 0; i < 5; i++) {
+        
         let computerSelection = getComputerChoice();
         let playerSelection = getUserChoice();
-        playRound();
+        
+        
         console.log("The computer selected: " + computerSelection);
         console.log("You selected: " + playerSelection);
         console.log(playRound(playerSelection, computerSelection));
         console.log("\n");
-    
+        keepScore(playerSelection, computerSelection);
+                
+        
     }
-    
+    console.log("Total score player: " + playerScore);
+    console.log("Total score computer: " + computerScore);
 }
 
 game();
 
-    
 
 
+ 
 
